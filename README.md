@@ -12,4 +12,6 @@ Trabalho da disciplina de Computação Gráfica no curso de Ciência da Computa�
 - Área de desenho (QFrame promovido)
 - Sistema de Display File
 - Representação de pontos
-- Em andamento: retas, triângulos e coordenadas do mundo
+- Representação de retas
+- Representação de triângulos
+- Em andamento: coordenadas do mundo
