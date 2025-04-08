@@ -13,13 +13,15 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     objeto.cpp \
-    ponto.cpp
+    ponto.cpp \
+    reta.cpp
 
 HEADERS += \
     areadesenho.h \
     mainwindow.h \
     objeto.h \
-    ponto.h
+    ponto.h \
+    reta.h
 
 FORMS += \
     mainwindow.ui

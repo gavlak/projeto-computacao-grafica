@@ -1,6 +1,8 @@
 #include "areadesenho.h"
 #include <QDebug> // <-- necessário para usar qDebug()
 #include <QMessageBox>
+#include "reta.h"
+
 
 
 AreaDesenho::AreaDesenho(QWidget *parent)
@@ -8,6 +10,8 @@ AreaDesenho::AreaDesenho(QWidget *parent)
 {
     setStyleSheet("background-color: white;");
     displayFile.append(new Ponto("A", QPointF(50, 50)));
+
+    displayFile.append(new Reta("Minha Reta", QPointF(30, 30), QPointF(150, 80)));
 
     qDebug() << "Construtor AreaDesenho chamado!";
 }
