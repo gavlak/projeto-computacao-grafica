@@ -24,19 +24,32 @@ AreaDesenho::AreaDesenho(QWidget *parent)
     pts << QPointF(100, 100) << QPointF(150, 200) << QPointF(50, 200);
     displayFile.adicionar(new Triangulo("Triângulo 1", pts));
 }
-
 void AreaDesenho::paintEvent(QPaintEvent *event)
 {
-
     QFrame::paintEvent(event);
 
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    /* Define todos os tipos visíveis por padrão
-    QSet<QString> tiposVisiveis;
-    tiposVisiveis << "Ponto" << "Reta" << "Triângulo";*/
+    // ====== DESENHA EIXOS (X e Y) ======
+    painter.setPen(Qt::gray);
 
+    // Eixo X
+    painter.drawLine(0, 0, width(), 0);  // linha no topo
+    for (int x = 0; x <= width(); x += 50) {
+        painter.drawLine(x, 0, x, 5);
+        if (x != 0)
+            painter.drawText(x + 2, 15, QString::number(x));
+    }
+
+    // Eixo Y
+    painter.drawLine(0, 0, 0, height()); // linha na esquerda
+    for (int y = 0; y <= height(); y += 50) {
+        painter.drawLine(0, y, 5, y); // marcações
+        painter.drawText(7, y + 5, QString::number(y)); // valores
+    }
+
+    // ====== FILTRA OS TIPOS VISÍVEIS COM BASE NAS CHECKBOXES ======
     QSet<QString> tiposVisiveis;
 
     if (checkPonto && checkPonto->isChecked())
@@ -48,6 +61,7 @@ void AreaDesenho::paintEvent(QPaintEvent *event)
     if (checkTriangulo && checkTriangulo->isChecked())
         tiposVisiveis.insert("Triângulo");
 
-    // Chama o método da DisplayFile para desenhar os objetos visíveis
+    // ====== DESENHA OS OBJETOS VISÍVEIS ======
     displayFile.desenharTodos(painter, tiposVisiveis);
 }
+
