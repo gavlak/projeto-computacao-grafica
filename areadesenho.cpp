@@ -2,8 +2,7 @@
 #include <QDebug> // <-- necessário para usar qDebug()
 #include <QMessageBox>
 #include "reta.h"
-
-
+#include "triangulo.h"
 
 AreaDesenho::AreaDesenho(QWidget *parent)
     : QFrame(parent)
@@ -13,7 +12,12 @@ AreaDesenho::AreaDesenho(QWidget *parent)
 
     displayFile.append(new Reta("Minha Reta", QPointF(30, 30), QPointF(150, 80)));
 
-    qDebug() << "Construtor AreaDesenho chamado!";
+    QVector<QPointF> pontosTriangulo;
+    pontosTriangulo << QPointF(200, 100) << QPointF(250, 200) << QPointF(150, 200);
+
+    displayFile.append(new Triangulo("Triângulo 1", pontosTriangulo));
+
+    //qDebug() << "Construtor AreaDesenho chamado!";
 }
 
 void AreaDesenho::paintEvent(QPaintEvent *event)
