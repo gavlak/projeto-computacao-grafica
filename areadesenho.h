@@ -7,6 +7,7 @@
 #include "objeto.h"
 #include "ponto.h"
 #include "displayfile.h"
+#include <QCheckBox>
 
 class AreaDesenho : public QFrame
 {
@@ -14,13 +15,19 @@ class AreaDesenho : public QFrame
 
 public:
     explicit AreaDesenho(QWidget *parent = nullptr);
+    void configurarCheckboxes(QCheckBox* ponto, QCheckBox* reta, QCheckBox* triangulo);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
-    // QList<Objeto*> displayFile;
+    // Comentado: QList<Objeto*> displayFile;
     DisplayFile displayFile;
+
+    // Checkboxes para controle de visibilidade
+    QCheckBox* checkPonto = nullptr;
+    QCheckBox* checkReta = nullptr;
+    QCheckBox* checkTriangulo = nullptr;
 };
 
 #endif // AREADESENHO_H

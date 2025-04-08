@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>803</width>
     <height>600</height>
    </rect>
   </property>
@@ -54,13 +54,52 @@ color: black;
      <string>Fechar</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="checkPonto">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>20</y>
+      <width>141</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mostrar pontos</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkTriangulo">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>60</y>
+      <width>151</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mostrar triangulos</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkReta">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>100</y>
+      <width>111</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mostrar retas</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>803</width>
      <height>25</height>
     </rect>
    </property>

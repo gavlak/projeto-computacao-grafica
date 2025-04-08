@@ -1,0 +1,10 @@
+release/areadesenho.o
+release/displayfile.o
+release/main.o
+release/mainwindow.o
+release/objeto.o
+release/ponto.o
+release/reta.o
+release/triangulo.o
+release/moc_areadesenho.o
+release/moc_mainwindow.o

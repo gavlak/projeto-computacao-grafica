@@ -1,0 +1,10 @@
+debug/areadesenho.o
+debug/displayfile.o
+debug/main.o
+debug/mainwindow.o
+debug/objeto.o
+debug/ponto.o
+debug/reta.o
+debug/triangulo.o
+debug/moc_areadesenho.o
+debug/moc_mainwindow.o

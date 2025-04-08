@@ -3,11 +3,18 @@
 #include <QMessageBox>
 #include "reta.h"
 #include "triangulo.h"
+#include <QCheckBox>
+
+void AreaDesenho::configurarCheckboxes(QCheckBox* p, QCheckBox* r, QCheckBox* t) {
+    checkPonto = p;
+    checkReta = r;
+    checkTriangulo = t;
+}
 
 AreaDesenho::AreaDesenho(QWidget *parent)
     : QFrame(parent)
 {
-    setStyleSheet("background-color: white;");
+    this->setStyleSheet("background-color: white;");
 
     // Adiciona os objetos à nova DisplayFile personalizada
     displayFile.adicionar(new Ponto("A", QPointF(50, 50)));
@@ -20,14 +27,26 @@ AreaDesenho::AreaDesenho(QWidget *parent)
 
 void AreaDesenho::paintEvent(QPaintEvent *event)
 {
+
     QFrame::paintEvent(event);
 
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    // Define todos os tipos visíveis por padrão
+    /* Define todos os tipos visíveis por padrão
     QSet<QString> tiposVisiveis;
-    tiposVisiveis << "Ponto" << "Reta" << "Triângulo";
+    tiposVisiveis << "Ponto" << "Reta" << "Triângulo";*/
+
+    QSet<QString> tiposVisiveis;
+
+    if (checkPonto && checkPonto->isChecked())
+        tiposVisiveis.insert("Ponto");
+
+    if (checkReta && checkReta->isChecked())
+        tiposVisiveis.insert("Reta");
+
+    if (checkTriangulo && checkTriangulo->isChecked())
+        tiposVisiveis.insert("Triângulo");
 
     // Chama o método da DisplayFile para desenhar os objetos visíveis
     displayFile.desenharTodos(painter, tiposVisiveis);
