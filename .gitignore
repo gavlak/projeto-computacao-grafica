@@ -1,0 +1,12 @@
+# Arquivos e pastas de build do Qt Creator
+build-*/
+*.o
+*.exe
+*.obj
+*.idx
+*.user
+*.pro.user
+*.qmake.stash
+*.log
+*.tmp
+.qtc_clangd/
