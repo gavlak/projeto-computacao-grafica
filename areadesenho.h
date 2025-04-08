@@ -6,6 +6,7 @@
 #include <QList>
 #include "objeto.h"
 #include "ponto.h"
+#include "displayfile.h"
 
 class AreaDesenho : public QFrame
 {
@@ -18,7 +19,8 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
-    QList<Objeto*> displayFile;
+    // QList<Objeto*> displayFile;
+    DisplayFile displayFile;
 };
 
 #endif // AREADESENHO_H

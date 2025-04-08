@@ -10,18 +10,22 @@ CONFIG += c++17
 
 SOURCES += \
     areadesenho.cpp \
+    displayfile.cpp \
     main.cpp \
     mainwindow.cpp \
     objeto.cpp \
     ponto.cpp \
-    reta.cpp
+    reta.cpp \
+    triangulo.cpp
 
 HEADERS += \
     areadesenho.h \
+    displayfile.h \
     mainwindow.h \
     objeto.h \
     ponto.h \
-    reta.h
+    reta.h \
+    triangulo.h
 
 FORMS += \
     mainwindow.ui
