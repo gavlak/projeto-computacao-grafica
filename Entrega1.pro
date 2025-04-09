@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    algoritmos.cpp \
     areadesenho.cpp \
     displayfile.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
     triangulo.cpp
 
 HEADERS += \
+    algoritmos.h \
     areadesenho.h \
     displayfile.h \
     mainwindow.h \

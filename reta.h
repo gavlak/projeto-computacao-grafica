@@ -6,10 +6,10 @@
 
 class Reta : public Objeto {
 public:
-    QPointF pontoInicial;
-    QPointF pontoFinal;
+    QPointF ponto1;
+    QPointF ponto2;
 
-    Reta(QString nome, QPointF inicio, QPointF fim);
+    Reta(QString nome, QPointF p1, QPointF p2);
 
     void desenhar(QPainter &painter) override;
 };

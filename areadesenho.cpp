@@ -17,8 +17,8 @@ AreaDesenho::AreaDesenho(QWidget *parent)
     this->setStyleSheet("background-color: white;");
 
     // Adiciona os objetos à nova DisplayFile personalizada
-    displayFile.adicionar(new Ponto("A", QPointF(50, 50)));
-    displayFile.adicionar(new Reta("Minha Reta", QPointF(30, 30), QPointF(150, 80)));
+    displayFile.adicionar(new Ponto("A", QPointF(450, 450)));
+    displayFile.adicionar(new Reta("Minha Reta", QPointF(300, 300), QPointF(150, 80)));
 
     QVector<QPointF> pts;
     pts << QPointF(100, 100) << QPointF(150, 200) << QPointF(50, 200);
