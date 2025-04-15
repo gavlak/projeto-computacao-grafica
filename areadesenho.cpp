@@ -16,7 +16,6 @@ AreaDesenho::AreaDesenho(QWidget *parent)
 {
     this->setStyleSheet("background-color: white;");
 
-    // Adiciona os objetos à nova DisplayFile personalizada
     displayFile.adicionar(new Ponto("A", QPointF(450, 450)));
     displayFile.adicionar(new Reta("Minha Reta", QPointF(300, 300), QPointF(150, 80)));
 
@@ -31,25 +30,23 @@ void AreaDesenho::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    // ====== DESENHA EIXOS (X e Y) ======
     painter.setPen(Qt::gray);
 
-    // Eixo X
-    painter.drawLine(0, 0, width(), 0);  // linha no topo
-    for (int x = 0; x <= width(); x += 50) {
+    //marcacoes eixo x
+    painter.drawLine(0, 0, width(), 0);
+    for (int x = 50; x <= width() - 50; x += 50) {
         painter.drawLine(x, 0, x, 5);
-        if (x != 0)
-            painter.drawText(x + 2, 15, QString::number(x));
+        painter.drawText(x + 2, 15, QString::number(x));
     }
 
-    // Eixo Y
-    painter.drawLine(0, 0, 0, height()); // linha na esquerda
-    for (int y = 0; y <= height(); y += 50) {
-        painter.drawLine(0, y, 5, y); // marcações
-        painter.drawText(7, y + 5, QString::number(y)); // valores
+    //marcacoes eixo y
+    painter.drawLine(0, 0, 0, height());
+    for (int y = 50; y <= height(); y += 50) {
+        painter.drawLine(0, y, 5, y);
+        painter.drawText(7, y + 5, QString::number(y));
     }
 
-    // ====== FILTRA OS TIPOS VISÍVEIS COM BASE NAS CHECKBOXES ======
+    //tipos visiveis com base nas check boxes
     QSet<QString> tiposVisiveis;
 
     if (checkPonto && checkPonto->isChecked())
@@ -61,7 +58,6 @@ void AreaDesenho::paintEvent(QPaintEvent *event)
     if (checkTriangulo && checkTriangulo->isChecked())
         tiposVisiveis.insert("Triângulo");
 
-    // ====== DESENHA OS OBJETOS VISÍVEIS ======
     displayFile.desenharTodos(painter, tiposVisiveis);
 }
 

@@ -17,7 +17,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void mostrarSobre();
+
 private:
     Ui::MainWindow *ui;
 };
-#endif // MAINWINDOW_H
+#endif

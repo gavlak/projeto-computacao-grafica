@@ -14,4 +14,4 @@ public:
     void desenhar(QPainter &painter) override;
 };
 
-#endif // RETA_H
+#endif

@@ -23,4 +23,4 @@ public:
     void desenharTodos(QPainter& painter, const QSet<QString>& tiposVisiveis);
 };
 
-#endif // DISPLAYFILE_H
+#endif

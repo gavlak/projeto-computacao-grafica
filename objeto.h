@@ -9,8 +9,8 @@ public:
     QString nome;
     QString tipo;
 
-    virtual void desenhar(QPainter &painter) = 0; // função abstrata pura
+    virtual void desenhar(QPainter &painter) = 0;
     virtual ~Objeto() = default;
 };
 
-#endif // OBJETO_H
+#endif

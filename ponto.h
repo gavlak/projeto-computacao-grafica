@@ -13,4 +13,4 @@ public:
     void desenhar(QPainter &painter) override;
 };
 
-#endif // PONTO_H
+#endif

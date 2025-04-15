@@ -11,7 +11,7 @@
 
 class AreaDesenho : public QFrame
 {
-    Q_OBJECT  // Qt precisa disso para o sistema de sinais e slots
+    Q_OBJECT
 
 public:
     explicit AreaDesenho(QWidget *parent = nullptr);
@@ -21,13 +21,12 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
-    // Comentado: QList<Objeto*> displayFile;
+    //QList<Objeto*> displayFile; implementacao antiga
     DisplayFile displayFile;
 
-    // Checkboxes para controle de visibilidade
     QCheckBox* checkPonto = nullptr;
     QCheckBox* checkReta = nullptr;
     QCheckBox* checkTriangulo = nullptr;
 };
 
-#endif // AREADESENHO_H
+#endif
