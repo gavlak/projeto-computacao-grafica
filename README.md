@@ -1,4 +1,4 @@
-# Projeto de Computação Gráfica 🎨
+# Projeto de Computação Gráfica 
 
 Trabalho da disciplina de Computação Gráfica no curso de Ciência da Computação.
 
@@ -8,10 +8,11 @@ Trabalho da disciplina de Computação Gráfica no curso de Ciência da Computa�
 - QPainter
 - Qt Creator
 
-## Funcionalidades implementadas
-- Área de desenho (QFrame promovido)
-- Sistema de Display File
-- Representação de pontos
-- Representação de retas
-- Representação de triângulos
-- Em andamento: coordenadas do mundo
+### ✅ Entrega 1 – Concluída
+Implementações:
+- Área de desenho com QFrame promovido
+- Lista encadeada personalizada (Display File)
+- Renderização de pontos, retas e triângulos
+- Estilização por QSS global via estilo Fusion
+- Menu-bar com opções: Abrir, Salvar e Sair, Sobre
+- Algoritmo manual para desenhar poligono(triangulo)
