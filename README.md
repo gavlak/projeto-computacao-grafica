@@ -8,7 +8,7 @@ Trabalho da disciplina de Computação Gráfica no curso de Ciência da Computa�
 - QPainter
 - Qt Creator
 
-### ✅ Entrega 1 – Concluída
+###Entrega 1 
 Implementações:
 - Área de desenho com QFrame promovido
 - Lista encadeada personalizada (Display File)
