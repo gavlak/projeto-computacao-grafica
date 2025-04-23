@@ -42,6 +42,9 @@ public:
     QSlider *sliderTransX;
     QSlider *sliderTransY;
     QLabel *label;
+    QSlider *sliderEscalaX;
+    QSlider *sliderEscalaY;
+    QLabel *label_2;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QMenu *menu_Arquivo;
@@ -102,6 +105,23 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(670, 190, 71, 20));
+        sliderEscalaX = new QSlider(centralwidget);
+        sliderEscalaX->setObjectName("sliderEscalaX");
+        sliderEscalaX->setGeometry(QRect(630, 310, 160, 18));
+        sliderEscalaX->setMinimum(1);
+        sliderEscalaX->setMaximum(30);
+        sliderEscalaX->setValue(10);
+        sliderEscalaX->setOrientation(Qt::Orientation::Horizontal);
+        sliderEscalaY = new QSlider(centralwidget);
+        sliderEscalaY->setObjectName("sliderEscalaY");
+        sliderEscalaY->setGeometry(QRect(630, 340, 160, 18));
+        sliderEscalaY->setMinimum(1);
+        sliderEscalaY->setMaximum(30);
+        sliderEscalaY->setValue(10);
+        sliderEscalaY->setOrientation(Qt::Orientation::Horizontal);
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(680, 290, 63, 20));
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -138,6 +158,7 @@ public:
         checkTriangulo->setText(QCoreApplication::translate("MainWindow", "Mostrar triangulos", nullptr));
         checkReta->setText(QCoreApplication::translate("MainWindow", "Mostrar retas", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Transla\303\247\303\243o", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Escala", nullptr));
         menu_Arquivo->setTitle(QCoreApplication::translate("MainWindow", "&Arquivo", nullptr));
         menu_Informa_es->setTitle(QCoreApplication::translate("MainWindow", "Detalhes", nullptr));
     } // retranslateUi

@@ -32,3 +32,12 @@ std::vector<std::vector<float>> Transformacoes::multiplicar(
 
     return resultado;
 }
+
+std::vector<std::vector<float>> Transformacoes::escala(float sx, float sy) {
+    return {
+        {sx, 0,  0},
+        {0,  sy, 0},
+        {0,  0,  1}
+    };
+}
+

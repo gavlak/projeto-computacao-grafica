@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "areadesenho.h"  // Necessário para usar AreaDesenho*
+#include "areadesenho.h"
 #include "objeto.h"
 
 QT_BEGIN_NAMESPACE
@@ -21,12 +21,13 @@ public:
 
 private slots:
     void mostrarSobre();
-    void aplicarTranslacao();
+    void aplicarTransformacoes();  // Aplica translação e escala
     void atualizarComboObjetos();
+    void resetarSliders();         // Reseta os sliders ao selecionar um novo objeto
 
 private:
     Ui::MainWindow *ui;
-    AreaDesenho* areaDesenho;  // Ponteiro para a área de desenho promovida
+    AreaDesenho* areaDesenho;
 };
 
 #endif // MAINWINDOW_H

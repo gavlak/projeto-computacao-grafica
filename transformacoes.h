@@ -9,6 +9,8 @@ public:
 
     static std::vector<std::vector<float>> translacao(float dx, float dy);
 
+    static std::vector<std::vector<float>> escala(float sx, float sy);
+
     static std::vector<std::vector<float>> multiplicar(
         const std::vector<std::vector<float>>& A,
         const std::vector<std::vector<float>>& B
