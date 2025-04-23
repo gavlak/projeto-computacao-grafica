@@ -2,16 +2,21 @@
 #define TRIANGULO_H
 
 #include "objeto.h"
-#include <QVector>
-#include <QPointF>
+#include "tipos.h"
+#include <QPainter>
 
 class Triangulo : public Objeto {
 public:
-    QVector<QPointF> pontos;
-
-    Triangulo(QString nome, const QVector<QPointF> &pontos);
+    Triangulo(QString nome, float x1, float y1, float x2, float y2, float x3, float y3);
 
     void desenhar(QPainter &painter) override;
+    void aplicarTransformacao(const std::vector<std::vector<float>> &matriz) override;
+    QPointF centro() const override;
+    const std::vector<PontoHomogeneo>& getPontos() const override;
+    void setPontos(const std::vector<PontoHomogeneo>& novosPontos) override;
+
+private:
+    std::vector<PontoHomogeneo> pontos;
 };
 
-#endif
+#endif // TRIANGULO_H

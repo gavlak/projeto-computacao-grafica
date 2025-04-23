@@ -13,10 +13,13 @@
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 #include "areadesenho.h"
@@ -35,6 +38,10 @@ public:
     QCheckBox *checkPonto;
     QCheckBox *checkTriangulo;
     QCheckBox *checkReta;
+    QComboBox *comboObjetos;
+    QSlider *sliderTransX;
+    QSlider *sliderTransY;
+    QLabel *label;
     QStatusBar *statusbar;
     QMenuBar *menuBar;
     QMenu *menu_Arquivo;
@@ -44,7 +51,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(803, 620);
+        MainWindow->resize(948, 620);
         MainWindow->setStyleSheet(QString::fromUtf8("background-color: white;"));
         actionAbrir = new QAction(MainWindow);
         actionAbrir->setObjectName("actionAbrir");
@@ -75,13 +82,33 @@ public:
         checkReta = new QCheckBox(centralwidget);
         checkReta->setObjectName("checkReta");
         checkReta->setGeometry(QRect(630, 100, 111, 26));
+        comboObjetos = new QComboBox(centralwidget);
+        comboObjetos->setObjectName("comboObjetos");
+        comboObjetos->setGeometry(QRect(630, 150, 141, 31));
+        sliderTransX = new QSlider(centralwidget);
+        sliderTransX->setObjectName("sliderTransX");
+        sliderTransX->setGeometry(QRect(630, 220, 160, 18));
+        sliderTransX->setMinimum(-50);
+        sliderTransX->setMaximum(50);
+        sliderTransX->setOrientation(Qt::Orientation::Horizontal);
+        sliderTransX->setTickPosition(QSlider::TickPosition::NoTicks);
+        sliderTransY = new QSlider(centralwidget);
+        sliderTransY->setObjectName("sliderTransY");
+        sliderTransY->setGeometry(QRect(630, 250, 160, 18));
+        sliderTransY->setMinimum(-50);
+        sliderTransY->setMaximum(50);
+        sliderTransY->setOrientation(Qt::Orientation::Horizontal);
+        sliderTransY->setTickPosition(QSlider::TickPosition::NoTicks);
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(670, 190, 71, 20));
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName("menuBar");
-        menuBar->setGeometry(QRect(0, 0, 803, 25));
+        menuBar->setGeometry(QRect(0, 0, 948, 25));
         menu_Arquivo = new QMenu(menuBar);
         menu_Arquivo->setObjectName("menu_Arquivo");
         menu_Informa_es = new QMenu(menuBar);
@@ -110,6 +137,7 @@ public:
         checkPonto->setText(QCoreApplication::translate("MainWindow", "Mostrar pontos", nullptr));
         checkTriangulo->setText(QCoreApplication::translate("MainWindow", "Mostrar triangulos", nullptr));
         checkReta->setText(QCoreApplication::translate("MainWindow", "Mostrar retas", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Transla\303\247\303\243o", nullptr));
         menu_Arquivo->setTitle(QCoreApplication::translate("MainWindow", "&Arquivo", nullptr));
         menu_Informa_es->setTitle(QCoreApplication::translate("MainWindow", "Detalhes", nullptr));
     } // retranslateUi

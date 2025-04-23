@@ -16,6 +16,8 @@ class AreaDesenho : public QFrame
 public:
     explicit AreaDesenho(QWidget *parent = nullptr);
     void configurarCheckboxes(QCheckBox* ponto, QCheckBox* reta, QCheckBox* triangulo);
+    DisplayFile* getDisplayFile();
+
 
 protected:
     void paintEvent(QPaintEvent *event) override;

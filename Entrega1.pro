@@ -16,6 +16,7 @@ SOURCES += \
     objeto.cpp \
     ponto.cpp \
     reta.cpp \
+    transformacoes.cpp \
     triangulo.cpp
 
 HEADERS += \
@@ -25,6 +26,8 @@ HEADERS += \
     objeto.h \
     ponto.h \
     reta.h \
+    tipos.h \
+    transformacoes.h \
     triangulo.h
 
 FORMS += \

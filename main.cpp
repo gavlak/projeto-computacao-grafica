@@ -53,7 +53,6 @@ int main(int argc, char *argv[])
             background-color: black;
         }
 
-        /* Corrige visual da QMessageBox */
         QMessageBox {
             background-color: white;
         }
@@ -72,7 +71,25 @@ int main(int argc, char *argv[])
         QMessageBox QPushButton:hover {
             background-color: #dcdcdc;
         }
+
+        QLabel {
+            color: black;
+        }
+
+        QComboBox {
+            background-color: white;
+            color: black;
+            border: 1px solid gray;
+            padding: 4px;
+        }
+
+        QComboBox QAbstractItemView {
+            background-color: white;
+            color: black;
+            selection-background-color: #f0f0f0;
+        }
     )");
+
 
     MainWindow w;
     w.show();

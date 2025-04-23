@@ -40,3 +40,13 @@ void DisplayFile::desenharTodos(QPainter& painter, const QSet<QString>& tiposVis
         atual = atual->proximo;
     }
 }
+
+Objeto* DisplayFile::buscarPorNome(const QString& nome) {
+    No* atual = inicio;
+    while (atual) {
+        if (atual->obj->nome == nome)
+            return atual->obj;
+        atual = atual->proximo;
+    }
+    return nullptr;
+}

@@ -6,7 +6,7 @@
 #include <QSet>
 
 class DisplayFile {
-private:
+public:
     struct No {
         Objeto* obj;
         No* proximo;
@@ -21,6 +21,8 @@ public:
     void adicionar(Objeto* obj);
     void limpar();
     void desenharTodos(QPainter& painter, const QSet<QString>& tiposVisiveis);
+    Objeto* buscarPorNome(const QString& nome);
+
 };
 
 #endif

@@ -5,6 +5,7 @@ debug/mainwindow.o
 debug/objeto.o
 debug/ponto.o
 debug/reta.o
+debug/transformacoes.o
 debug/triangulo.o
 debug/moc_areadesenho.o
 debug/moc_mainwindow.o

@@ -5,6 +5,7 @@ release/mainwindow.o
 release/objeto.o
 release/ponto.o
 release/reta.o
+release/transformacoes.o
 release/triangulo.o
 release/moc_areadesenho.o
 release/moc_mainwindow.o
