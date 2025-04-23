@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "areadesenho.h" // necessário para acessar o método configurarCheckboxes
+#include "areadesenho.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,49 +9,60 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Estilo completo para deixar texto e caixinhas visíveis
-    QString estiloCheckbox = R"(
-        QCheckBox {
-            color: black;
-        }
-        QCheckBox::indicator {
-            width: 13px;
-            height: 13px;
-        }
-        QCheckBox::indicator:unchecked {
-            border: 1px solid black;
-            background-color: white;
-        }
-        QCheckBox::indicator:checked {
-            border: 1px solid black;
-            background-color: black;
-        }
-    )";
+    connect(ui->actionAbrir, &QAction::triggered, this, []() {
+        QMessageBox::information(nullptr, "Abrir", "Funcionalidade ainda não implementada.");
+    });
 
-    ui->checkPonto->setStyleSheet(estiloCheckbox);
-    ui->checkReta->setStyleSheet(estiloCheckbox);
-    ui->checkTriangulo->setStyleSheet(estiloCheckbox);
+    connect(ui->actionSalvar, &QAction::triggered, this, []() {
+        QMessageBox::information(nullptr, "Salvar e Sair", "Ainda não implementado.");
+    });
 
-    // Pega o ponteiro para a área promovida (área de desenho)
+    connect(ui->actionSobre, &QAction::triggered, this, &MainWindow::mostrarSobre);
+
     AreaDesenho* areaDesenho = findChild<AreaDesenho*>("areaDesenho");
-
-    // Passa os ponteiros das checkboxes para a área de desenho
     areaDesenho->configurarCheckboxes(ui->checkPonto, ui->checkReta, ui->checkTriangulo);
 
-    // Conecta os checkboxes ao update da área de desenho
-    connect(ui->checkPonto, &QCheckBox::checkStateChanged, areaDesenho, QOverload<>::of(&QWidget::update));
-    connect(ui->checkReta, &QCheckBox::checkStateChanged, areaDesenho, QOverload<>::of(&QWidget::update));
-    connect(ui->checkTriangulo, &QCheckBox::checkStateChanged, areaDesenho, QOverload<>::of(&QWidget::update));
+    connect(ui->checkPonto, &QCheckBox::toggled, areaDesenho, QOverload<>::of(&AreaDesenho::update));
+    connect(ui->checkReta, &QCheckBox::toggled, areaDesenho, QOverload<>::of(&AreaDesenho::update));
+    connect(ui->checkTriangulo, &QCheckBox::toggled, areaDesenho, QOverload<>::of(&AreaDesenho::update));
 
-    // [Opcional] Conectar botões para adicionar objetos
-    /*
-    connect(ui->btnCriarPonto, &QPushButton::clicked, this, &MainWindow::criarPonto);
-    connect(ui->btnCriarReta, &QPushButton::clicked, this, &MainWindow::criarReta);
-    connect(ui->btnCriarTriangulo, &QPushButton::clicked, this, &MainWindow::criarTriangulo);
-    */
+    connect(ui->botaoTransladar, &QPushButton::clicked, this, &MainWindow::aplicarTranslacao);
+    connect(ui->botaoEscalar, &QPushButton::clicked, this, &MainWindow::aplicarEscala);
+    connect(ui->botaoRotacionar, &QPushButton::clicked, this, &MainWindow::aplicarRotacao);
+
+    ui->botaoTransladar->setStyleSheet("color: red;");
+    ui->botaoEscalar->setStyleSheet("color: green;");
+    ui->botaoRotacionar->setStyleSheet("color: blue;");
+
+
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::mostrarSobre()
+{
+    QMessageBox::information(this, "Sobre", "Visualizador 2D - Computação Gráfica\nAluno: Seu Nome\nProfessor: Erikson Morais");
+}
+
+void MainWindow::aplicarTranslacao() {
+    AreaDesenho* areaDesenho = findChild<AreaDesenho*>("areaDesenho");
+    areaDesenho->aplicarTranslacao(50, 30); // move todos os objetos
+    areaDesenho->update();
+}
+
+void MainWindow::aplicarEscala() {
+    AreaDesenho* areaDesenho = findChild<AreaDesenho*>("areaDesenho");
+    areaDesenho->aplicarEscala(1.2, 1.2); // aumenta 20%
+    areaDesenho->update();
+}
+
+void MainWindow::aplicarRotacao() {
+    AreaDesenho* areaDesenho = findChild<AreaDesenho*>("areaDesenho");
+    areaDesenho->aplicarRotacao(30, QPointF(300, 300)); // gira em torno de (300, 300)
+    areaDesenho->update();
+}
+

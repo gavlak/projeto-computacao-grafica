@@ -7,11 +7,15 @@
 
 class Triangulo : public Objeto {
 public:
-    QVector<QPointF> pontos;
-
-    Triangulo(QString nome, const QVector<QPointF> &pontos);
-
+    Triangulo(QString nome, QVector<QPointF> pontos);
     void desenhar(QPainter &painter) override;
+
+    void transladar(float dx, float dy);
+    void escalar(float sx, float sy);
+    void rotacionar(float anguloGraus, const QPointF& centro);
+
+private:
+    QVector<QPointF> pontosTriangulo;
 };
 
-#endif // TRIANGULO_H
+#endif

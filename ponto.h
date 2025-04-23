@@ -6,11 +6,15 @@
 
 class Ponto : public Objeto {
 public:
-    QPointF coordenada;
-
-    Ponto(QString nome, QPointF c);
-
+    Ponto(QString nome, QPointF p);
     void desenhar(QPainter &painter) override;
+
+    void transladar(float dx, float dy);
+    void escalar(float sx, float sy);
+    void rotacionar(float anguloGraus, const QPointF& centro);
+
+private:
+    QPointF coordenada;
 };
 
-#endif // PONTO_H
+#endif

@@ -2,32 +2,31 @@
 #define AREADESENHO_H
 
 #include <QFrame>
-#include <QPainter>
-#include <QList>
-#include "objeto.h"
-#include "ponto.h"
-#include "displayfile.h"
 #include <QCheckBox>
+#include <QSet>
+#include "displayfile.h"
 
 class AreaDesenho : public QFrame
 {
-    Q_OBJECT  // Qt precisa disso para o sistema de sinais e slots
+    Q_OBJECT
 
 public:
     explicit AreaDesenho(QWidget *parent = nullptr);
     void configurarCheckboxes(QCheckBox* ponto, QCheckBox* reta, QCheckBox* triangulo);
 
+    void aplicarTranslacao(float dx, float dy);
+    void aplicarEscala(float sx, float sy);
+    void aplicarRotacao(float angulo, const QPointF& centro);
+
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
-    // Comentado: QList<Objeto*> displayFile;
     DisplayFile displayFile;
-
-    // Checkboxes para controle de visibilidade
     QCheckBox* checkPonto = nullptr;
     QCheckBox* checkReta = nullptr;
     QCheckBox* checkTriangulo = nullptr;
 };
 
-#endif // AREADESENHO_H
+#endif

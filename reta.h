@@ -6,12 +6,16 @@
 
 class Reta : public Objeto {
 public:
+    Reta(QString nome, QPointF p1, QPointF p2);
+    void desenhar(QPainter &painter) override;
+
+    void transladar(float dx, float dy);
+    void escalar(float sx, float sy);
+    void rotacionar(float anguloGraus, const QPointF& centro);
+
+private:
     QPointF ponto1;
     QPointF ponto2;
-
-    Reta(QString nome, QPointF p1, QPointF p2);
-
-    void desenhar(QPainter &painter) override;
 };
 
-#endif // RETA_H
+#endif

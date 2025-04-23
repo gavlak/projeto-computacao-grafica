@@ -10,9 +10,11 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -24,21 +26,32 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionAbrir;
+    QAction *actionSalvar;
+    QAction *actionSobre;
     QWidget *centralwidget;
     AreaDesenho *areaDesenho;
     QPushButton *botaoFechar;
     QCheckBox *checkPonto;
     QCheckBox *checkTriangulo;
     QCheckBox *checkReta;
-    QMenuBar *menubar;
     QStatusBar *statusbar;
+    QMenuBar *menuBar;
+    QMenu *menu_Arquivo;
+    QMenu *menu_Informa_es;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(803, 600);
+        MainWindow->resize(803, 620);
         MainWindow->setStyleSheet(QString::fromUtf8("background-color: white;"));
+        actionAbrir = new QAction(MainWindow);
+        actionAbrir->setObjectName("actionAbrir");
+        actionSalvar = new QAction(MainWindow);
+        actionSalvar->setObjectName("actionSalvar");
+        actionSobre = new QAction(MainWindow);
+        actionSobre->setObjectName("actionSobre");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         areaDesenho = new AreaDesenho(centralwidget);
@@ -63,13 +76,23 @@ public:
         checkReta->setObjectName("checkReta");
         checkReta->setGeometry(QRect(630, 100, 111, 26));
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 803, 25));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName("menuBar");
+        menuBar->setGeometry(QRect(0, 0, 803, 25));
+        menu_Arquivo = new QMenu(menuBar);
+        menu_Arquivo->setObjectName("menu_Arquivo");
+        menu_Informa_es = new QMenu(menuBar);
+        menu_Informa_es->setObjectName("menu_Informa_es");
+        MainWindow->setMenuBar(menuBar);
+
+        menuBar->addAction(menu_Arquivo->menuAction());
+        menuBar->addAction(menu_Informa_es->menuAction());
+        menu_Arquivo->addAction(actionAbrir);
+        menu_Arquivo->addAction(actionSalvar);
+        menu_Informa_es->addAction(actionSobre);
 
         retranslateUi(MainWindow);
         QObject::connect(botaoFechar, &QPushButton::clicked, MainWindow, qOverload<>(&QMainWindow::close));
@@ -80,10 +103,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionAbrir->setText(QCoreApplication::translate("MainWindow", "&Abrir", nullptr));
+        actionSalvar->setText(QCoreApplication::translate("MainWindow", "&Salvar e sair", nullptr));
+        actionSobre->setText(QCoreApplication::translate("MainWindow", "&Sobre", nullptr));
         botaoFechar->setText(QCoreApplication::translate("MainWindow", "Fechar", nullptr));
         checkPonto->setText(QCoreApplication::translate("MainWindow", "Mostrar pontos", nullptr));
         checkTriangulo->setText(QCoreApplication::translate("MainWindow", "Mostrar triangulos", nullptr));
         checkReta->setText(QCoreApplication::translate("MainWindow", "Mostrar retas", nullptr));
+        menu_Arquivo->setTitle(QCoreApplication::translate("MainWindow", "&Arquivo", nullptr));
+        menu_Informa_es->setTitle(QCoreApplication::translate("MainWindow", "Detalhes", nullptr));
     } // retranslateUi
 
 };

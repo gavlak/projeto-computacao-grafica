@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>803</width>
-    <height>600</height>
+    <height>620</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -58,7 +58,7 @@ color: black;
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>20</y>
+      <y>190</y>
       <width>141</width>
       <height>26</height>
      </rect>
@@ -71,7 +71,7 @@ color: black;
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>60</y>
+      <y>150</y>
       <width>151</width>
       <height>26</height>
      </rect>
@@ -84,7 +84,7 @@ color: black;
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>100</y>
+      <y>170</y>
       <width>111</width>
       <height>26</height>
      </rect>
@@ -93,18 +93,148 @@ color: black;
      <string>Mostrar retas</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboTipoFigura_">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>50</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Ponto</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Reta</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Triângulo</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>110</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>20</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:9pt;&quot;&gt;Objetos 3D&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botaoTransladar">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>290</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Mover Objeto</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botaoEscalar">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>340</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Escalar Objeto</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botaoRotacionar">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>390</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rotacionar Objeto</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_Arquivo">
+    <property name="title">
+     <string>&amp;Arquivo</string>
+    </property>
+    <addaction name="actionAbrir"/>
+    <addaction name="actionSalvar"/>
+   </widget>
+   <widget class="QMenu" name="menu_Informa_es">
+    <property name="title">
+     <string>Detalhes</string>
+    </property>
+    <addaction name="actionSobre"/>
+   </widget>
+   <addaction name="menu_Arquivo"/>
+   <addaction name="menu_Informa_es"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>&amp;Abrir</string>
+   </property>
+  </action>
+  <action name="actionSalvar">
+   <property name="text">
+    <string>&amp;Salvar e sair</string>
+   </property>
+  </action>
+  <action name="actionSobre">
+   <property name="text">
+    <string>&amp;Sobre</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

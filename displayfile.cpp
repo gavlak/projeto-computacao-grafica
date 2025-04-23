@@ -1,32 +1,25 @@
 #include "displayfile.h"
 
-DisplayFile::DisplayFile() : inicio(nullptr) {}
+DisplayFile::DisplayFile() {
+    inicio = nullptr;
+}
 
 DisplayFile::~DisplayFile() {
     limpar();
 }
 
 void DisplayFile::adicionar(Objeto* obj) {
-    No* novo = new No{obj, nullptr};
-
-    if (!inicio) {
-        inicio = novo;
-    } else {
-        No* atual = inicio;
-        while (atual->proximo != nullptr)
-            atual = atual->proximo;
-
-        atual->proximo = novo;
-    }
+    No* novo = new No{obj, inicio};
+    inicio = novo;
 }
 
 void DisplayFile::limpar() {
     No* atual = inicio;
     while (atual) {
-        No* proximo = atual->proximo;
-        delete atual->obj;
-        delete atual;
-        atual = proximo;
+        No* temp = atual;
+        atual = atual->proximo;
+        delete temp->obj;
+        delete temp;
     }
     inicio = nullptr;
 }

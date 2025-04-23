@@ -1,41 +1,63 @@
-/*#include "triangulo.h"
-#include <QPen>
+#include "triangulo.h"
+#include "matriz.h"
 
-Triangulo::Triangulo(QString nome, const QVector<QPointF> &pontos)
-{
-    this->nome = nome;
-    this->tipo = "Triângulo";
-    this->pontos = pontos;
-}
+Triangulo::Triangulo(QString nome, QVector<QPointF> pontos)
+    : Objeto(nome, "triangulo"), pontosTriangulo(pontos) {}
 
-void Triangulo::desenhar(QPainter &painter)
-{
-    if (pontos.size() == 3) {
+void Triangulo::desenhar(QPainter &painter) {
+    if (pontosTriangulo.size() == 3) {
         QPen pen(Qt::darkGreen);
         pen.setWidth(2);
         painter.setPen(pen);
-
-        painter.drawLine(pontos[0], pontos[1]);
-        painter.drawLine(pontos[1], pontos[2]);
-        painter.drawLine(pontos[2], pontos[0]);
-    }
-}*/
-
-#include "triangulo.h"
-#include "algoritmos.h"
-
-Triangulo::Triangulo(QString nome, const QVector<QPointF> &pontos) {
-    this->nome = nome;
-    this->tipo = "Triângulo";
-    this->pontos = pontos;
-}
-
-void Triangulo::desenhar(QPainter& painter) {
-    // painter.drawPolygon(pontos); // antigo
-    for (int i = 0; i < pontos.size(); ++i) {
-        QPointF p1 = pontos[i];
-        QPointF p2 = pontos[(i + 1) % pontos.size()];
-        desenharRetaBresenham(painter, p1, p2); // novo
+        painter.drawPolygon(pontosTriangulo.constData(), 3);
     }
 }
 
+void Triangulo::transladar(float dx, float dy) {
+    Matriz m = Matriz::translacao(dx, dy);
+    for (QPointF& p : pontosTriangulo) {
+        Matriz pt(3, 1);
+        pt[0][0] = p.x();
+        pt[1][0] = p.y();
+        pt[2][0] = 1;
+        Matriz r = m * pt;
+        p.setX(r[0][0]);
+        p.setY(r[1][0]);
+    }
+}
+
+void Triangulo::escalar(float sx, float sy) {
+    QPointF centro(0, 0);
+    for (const QPointF& p : pontosTriangulo) {
+        centro += p;
+    }
+    centro /= 3;
+
+    Matriz m1 = Matriz::translacao(-centro.x(), -centro.y());
+    Matriz esc = Matriz::escala(sx, sy);
+    Matriz m2 = Matriz::translacao(centro.x(), centro.y());
+    Matriz m = m2 * esc * m1;
+
+    for (QPointF& p : pontosTriangulo) {
+        Matriz pt(3, 1);
+        pt[0][0] = p.x();
+        pt[1][0] = p.y();
+        pt[2][0] = 1;
+        Matriz r = m * pt;
+        p.setX(r[0][0]);
+        p.setY(r[1][0]);
+    }
+}
+
+void Triangulo::rotacionar(float angulo, const QPointF& centro) {
+    Matriz m = Matriz::rotacao(angulo, centro.x(), centro.y());
+    for (QPointF& p : pontosTriangulo) {
+        Matriz pt(3, 1);
+        pt[0][0] = p.x();
+        pt[1][0] = p.y();
+        pt[2][0] = 1;
+        Matriz r = m * pt;
+        p.setX(r[0][0]);
+        p.setY(r[1][0]);
+    }
+}
